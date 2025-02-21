@@ -12,12 +12,16 @@ public class Main {
         Equipement[] arsenal = {
           new AttackEquipement("Épée","Une épée","Commun",10),
           new DefenseEquipement("Bouclier","Un bouclier","Commun",15),
-          new ManaEquipement("Baguette","Une baguette","Rare",30)
+          new ManaEquipement("Baguette","Une baguette","Rare",30/2)
         };
 
         System.out.println(A_b.getDMG());
         A_b.addEquipement(arsenal[0]);
         System.out.println(A_b.getDMG());
+
+        System.out.println(A_j.getMP());
+        A_j.addEquipement(arsenal[2]);
+        System.out.println(A_j.getMP());
 
         fight(A_b,A_j);
 
@@ -36,6 +40,7 @@ public class Main {
             System.out.println("PdV restant: " + p1h + " et " + p2h);
 
             System.out.println(p1.getNom() + " inflige " + p1.getDMG());
+
             p2h -= p1.getDMG();
 
             if(p2h <= 0) {
@@ -46,10 +51,6 @@ public class Main {
 
             System.out.println(p2.getNom() + " inflige " + p2.getDMG());
 
-            if(p2.containsEquipement() > -1){
-                p2.getEquipement().get(p2.containsEquipement());
-            }
-
             p1h -= p2.getDMG();
 
             if(p1h <= 0) {
@@ -58,26 +59,5 @@ public class Main {
                 break;
             }
         } while (!(isdead1 && isdead2));
-
-        int p1m = p1.getMP();
-        int p2m = p2.getMP();
-
-        if(isdead1) {
-            if((p1m + p2m) > p2.getMaxMP()){
-                p2.setMP(p2.getMaxMP());
-            } else {
-                p2.setMP(p1m + p2m);
-            }
-
-            System.out.println("Nouveau mana: " + p2.getMP());
-        } else if (isdead2){
-            if((p2m + p1m) > p1.getMaxMP()){
-                p1.setMP(p1.getMaxMP());
-            } else {
-                p1.setMP(p2m + p1m);
-            }
-
-            System.out.println("Nouveau mana: " + p1.getMP());
-        }
     }
 }
