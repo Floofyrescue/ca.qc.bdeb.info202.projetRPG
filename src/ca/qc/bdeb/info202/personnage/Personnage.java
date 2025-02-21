@@ -1,5 +1,7 @@
 package ca.qc.bdeb.info202.personnage;
 import ca.qc.bdeb.info202.equipement.Equipement;
+import ca.qc.bdeb.info202.equipement.ManaEquipement;
+
 import java.util.ArrayList;
 
 public class Personnage {
@@ -78,5 +80,24 @@ public class Personnage {
 
     public int getCarryCapacity() {
         return carryCapacity;
+    }
+
+    public ArrayList<Equipement> getEquipement() {
+        return equipement;
+    }
+
+    public void setMP(int MP) {
+        this.MP = MP;
+    }
+
+    public int containsEquipement() {
+        int i = 0;
+        for (Equipement equipment : equipement) {
+            if(equipment instanceof ManaEquipement) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
     }
 }

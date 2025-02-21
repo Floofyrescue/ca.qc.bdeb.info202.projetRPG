@@ -10,7 +10,7 @@ public class Juif extends Personnage {
         this.maxMP = 200;
         this.MP = this.maxMP;
 
-        this.DMG = 0;
+        this.DMG = 2000;
         this.DEF = 0;
         this.carryCapacity = 6;
     }
